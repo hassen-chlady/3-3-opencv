@@ -1,0 +1,44 @@
+import cv2
+import numpy as np
+
+def triple(R):
+    img10 = cv2.imread(R, 1)
+    img= img10.copy()
+    Y = img.shape[0]
+    X = img.shape[1]
+    X1 = X // 3
+    Y2 = Y * 2 // 3
+    X2 = X*2 // 3
+    Y1 = Y  // 3
+    # 1
+    img1 = img[Y2:Y, 0:X1]
+    img2 = img[Y2:Y, X1:X2]
+    img3 = img[Y2:Y, X2:X]
+    # 2
+    img4 = img[Y1:Y2, 0:X1]
+    img5 = img[Y1:Y2, X1:X2]
+    img6 = img[Y1:Y2, X2:X]
+    # 3
+    img7 = img[0:Y1, 0:X1]
+    img8 = img[0:Y1, X1:X2]
+    img9 = img[0:Y1, X2:X]
+    cv2.line(img10,(X//3,0),(X//3,Y),(0,0,255),2)
+
+    cv2.line(img10, (X*2 // 3, 0), (X*2 // 3, Y), (0, 0, 255), 2)
+    cv2.line(img10, (0, Y//3), (X, Y//3), (0, 0, 255), 2)
+    cv2.line(img10, (0, Y*2//3), (X, Y*2//3), (0, 0, 255), 2)
+
+    cv2.imshow("hassen",img10)
+    cv2.imshow("h",img1)
+    cv2.imshow("h1", img2)
+    cv2.imshow("h2", img3)
+
+    cv2.imshow("h3", img4)
+    cv2.imshow("h4", img5)
+    cv2.imshow("h5", img6)
+
+    cv2.imshow("h6", img7)
+    cv2.imshow("h7", img8)
+    cv2.imshow("h8", img9)
+    cv2.waitKey(0)
+triple("flon.elfolani")
